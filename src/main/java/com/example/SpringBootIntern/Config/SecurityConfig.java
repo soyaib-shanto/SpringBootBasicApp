@@ -19,7 +19,7 @@ import org.springframework.security.config.Customizer;
 public class SecurityConfig {
 
 
-      private final CustomUserDetailsService userDetailsService;
+    private final CustomUserDetailsService userDetailsService;
 
     public SecurityConfig(CustomUserDetailsService userDetailsService) {
         this.userDetailsService = userDetailsService;
@@ -27,22 +27,22 @@ public class SecurityConfig {
 
 
 
-@Bean
-public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-    return http
-            .csrf(csrf -> csrf.disable())
-            .userDetailsService(userDetailsService)
-            .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/public").permitAll()
-                .requestMatchers("/user").hasAnyRole("USER", "ADMIN")
-                .requestMatchers("/admin", "/users").hasRole("ADMIN")
-                .anyRequest().authenticated()
-            )
-            .httpBasic(Customizer.withDefaults())
-            .build();
-}
-
- @Bean public PasswordEncoder passwordEncoder() {
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        return http
+                .csrf(csrf -> csrf.disable())
+                .userDetailsService(userDetailsService)
+                .authorizeHttpRequests(auth -> auth
+                    .requestMatchers("/public").permitAll()
+                    .requestMatchers("/user").hasAnyRole("USER", "ADMIN")
+                    .requestMatchers("/admin", "/users").hasRole("ADMIN")
+                    .anyRequest().authenticated()
+                )
+                .httpBasic(Customizer.withDefaults())
+                .build();
+    }
+    @Bean
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 

@@ -6,12 +6,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
+import com.example.SpringBootIntern.Repository.UserRepository;
 
 
 @RestController
 public class UserController {
 
-    @Autowired private UserService userService;
+     @Autowired
+     private UserService userService;
+
+     @Autowired
+     private UserRepository userRepository;
 
     @GetMapping("/public")
     public String publicEndpoint() {
@@ -30,7 +35,11 @@ public class UserController {
 
     @PostMapping("/users")
     public ResponseEntity<?> createUser(@Valid @RequestBody User user) {
-        userService.createUser(user);
+        
+        if (userRepository.existsByUsername(user.getUsername())) {
+            return ResponseEntity.badRequest().body("Username is taken");
+        }
+         userService.createUser(user);
         return ResponseEntity.ok("User created successfully");
     }
 }
