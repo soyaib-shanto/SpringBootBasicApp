@@ -142,7 +142,7 @@ docker-compose up --build
 
   <h3>🐳 Step 5: Access Application</h3>
   <ul>
-    <li>Spring Boot runs on host port <code>8081</code>.</li>
+    <li>Spring Boot runs on host port <code>8082</code>.</li>
     <li>PostgreSQL runs on host port <code>5434</code>.</li>
     <li>Use Postman to test the endpoints as in Part 1.</li>
   </ul>
