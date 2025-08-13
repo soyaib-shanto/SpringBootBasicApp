@@ -15,7 +15,7 @@
       color: #2c3e50;
     }
     code {
-      background-color: #f4f4f4;
+      background-color: #f4f4f4; 
       padding: 2px 6px;
       border-radius: 4px;
       font-size: 14px;
@@ -40,9 +40,9 @@
     <li>Set your PostgreSQL username and password:</li>
   </ol>
   <pre>
-spring.datasource.url=jdbc:postgresql://localhost:5432/intern_db
-spring.datasource.username=your_postgres_username
-spring.datasource.password=your_postgres_password
+      spring.datasource.url=jdbc:postgresql://localhost:5432/intern_db
+      spring.datasource.username=your_postgres_username
+      spring.datasource.password=your_postgres_password
   </pre>
   <ol start="3">
     <li>Create a database named <code>intern_db</code> in PostgreSQL.</li>
@@ -58,7 +58,7 @@ spring.datasource.password=your_postgres_password
   <h3>📫 Step 3: Test Endpoints with Postman</h3>
   <ul>
     <li><code>GET /public</code> – Accessible to everyone</li>
-    <li><code>GET /user</code> – Accessible to USER only</li>
+    <li><code>GET /user</code> – Accessible to USER and ADMIN Both</li>
     <li><code>GET /admin</code> – Accessible to ADMIN only</li>
     <li><code>POST /users</code> – Accessible to ADMIN only</li>
   </ul>
