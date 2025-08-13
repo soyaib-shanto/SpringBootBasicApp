@@ -114,10 +114,16 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    container_name: springboot-app
     ports:
-      - "8081:8081"
+      - "8082:8082"
     depends_on:
       - postgres
+    environment:
+      JDBC_URL: jdbc:postgresql://postgres:5432/intern_db
+      JDBC_USERNAME: postgres
+      JDBC_PASSWORD: mysecretpassword
+      SERVER_PORT: 8082
 
 volumes:
   postgres_data:
